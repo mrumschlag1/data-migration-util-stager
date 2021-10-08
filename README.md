@@ -1,23 +1,38 @@
-# Hello world JavaScript action
+# Data Migration Utility Stager
 
-This action prints "Hello World" or "Hello" + the name of a person to greet to the log. To learn how this action was built, see "[Creating a JavaScript action](https://help.github.com/en/articles/creating-a-javascript-action)" in the GitHub Help documentation.
+This action preps a directory of data loads for use with the [SFDX Data Migration Utility](https://github.com/forcedotcom/SFDX-Data-Move-Utility).
 
-## Inputs
+### `parentDir`
 
-### `who-to-greet`
-
-**Required** The name of the person to greet. Default `"World"`.
+**Required** The parent directory in your git repo with the data to load. Default `"Data"`.
 
 ## Outputs
 
-### `time`
+### `dirs`
 
-The time we greeted you.
+Array of Directories
+
+### `hasData`
+
+Boolean if parent directory has data directories
+
+### `directoryCount`
+
+Count of the number of Directories
+
+
 
 ## Example usage
 
 ```yaml
-uses: actions/hello-world-javascript-action@main
-with:
-  who-to-greet: 'Mona the Octocat'
+name: Check for Data Files
+        id: data
+        uses: mrumschlag1/data-migration-util-stager@main
+        with:
+          parentDir: "output/data"
+
+- name: Output results
+        if: ${{ steps.data.outputs.hasData }}
+        run: |
+          echo "Found ${{ steps.data.outputs.directoryCount }} directories"
 ```

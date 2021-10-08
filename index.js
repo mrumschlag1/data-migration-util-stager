@@ -4,7 +4,7 @@ const path = require('path');
 const { readdirSync } = require('fs')
 
 const getDirectories = source =>
-  readdirSync(path.resolve(__dirname, source), { withFileTypes: true })
+  readdirSync(source, { withFileTypes: true })
     .filter(dirent => dirent.isDirectory())
     .map(dirent => dirent.name)
 
