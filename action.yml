@@ -1,13 +1,17 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'Data Migration Util Stager'
+description: 'Prep files for sfdx data migration utility'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  parentDir:  # Parent Directory
+    description: 'Parent diretory containing data loads'
     required: true
-    default: 'World'
+    default: 'data'
 outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  dirs: # array of directories
+    description: 'Array of directories'
+  hasData: # boolean has data
+    description: 'Directory has data loads'
+  directoryCount: # count of data load directories
+    description: 'Count of data load directories under parent.'
 runs:
   using: 'node12'
   main: 'index.js'
