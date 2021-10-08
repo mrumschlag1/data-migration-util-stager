@@ -19,6 +19,7 @@
   "homepage": "https://github.com/mrumschlag1/data-migration-util-stager#readme",
   "dependencies": {
     "@actions/core": "^1.1.0",
-    "@actions/github": "^1.1.0"
+    "@actions/github": "^1.1.0",
+    "fs": "0.0.1-security"
   }
 }
