@@ -16,6 +16,8 @@ try {
       core.setOutput("dirs", JSON.stringify(dirs));
       core.setOutput("hasData", (dirs.length > 0));
       core.setOutput("directoryCount", dirs.length);
+      console.log(JSON.stringify(dirs));
+      
   }else{
     core.setOutput("hasData", false);
   }
