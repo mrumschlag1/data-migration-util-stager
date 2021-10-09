@@ -10,6 +10,10 @@ const getDirectories = source =>
 
 try {
   // `who-to-greet` input defined in action metadata file
+  // Get the JSON webhook payload for the event that triggered the workflow
+  const payload = JSON.stringify(github.context.payload, undefined, 2)
+  console.log(`The event payload: ${payload}`);
+  
   const parentDir = core.getInput('parentDir');
   console.log(`Getting files from  ${parentDir}!`);
   const dirs = getDirectories(parentDir);
@@ -17,9 +21,7 @@ try {
   core.setOutput("hasData", (dirs.length > 0));
   core.setOutput("directoryCount", dirs.length);
 
-  // Get the JSON webhook payload for the event that triggered the workflow
-  const payload = JSON.stringify(github.context.payload, undefined, 2)
-  console.log(`The event payload: ${payload}`);
+  
 } catch (error) {
   core.setFailed(error.message);
 }
